@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{ route('barang-keluars.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">
+                    <a href="{{ route('barang_keluars.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">
                         {{ __('Add New Barang Keluar') }}
                     </a>
 
@@ -31,9 +31,9 @@
                                     <td class="border px-4 py-2">{{ $barangKeluar->jumlah }}</td>
                                     <td class="border px-4 py-2">{{ $barangKeluar->tanggal }}</td>
                                     <td class="border px-4 py-2">
-                                        <a href="{{ route('barang-keluars.show', $barangKeluar) }}" class="bg-green-500 text-white px-2 py-1 rounded">{{ __('Show') }}</a>
-                                        <a href="{{ route('barang-keluars.edit', $barangKeluar) }}" class="bg-yellow-500 text-white px-2 py-1 rounded">{{ __('Edit') }}</a>
-                                        <form action="{{ route('barang-keluars.destroy', $barangKeluar) }}" method="POST" style="display:inline;">
+                                        <a href="{{ route('barang_keluars.show', $barangKeluar) }}" class="bg-green-500 text-white px-2 py-1 rounded">{{ __('Show') }}</a>
+                                        <a href="{{ route('barang_keluars.edit', $barangKeluar) }}" class="bg-yellow-500 text-white px-2 py-1 rounded">{{ __('Edit') }}</a>
+                                        <form action="{{ route('barang_keluars.destroy', $barangKeluar) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">{{ __('Delete') }}</button>

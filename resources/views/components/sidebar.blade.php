@@ -36,13 +36,13 @@
                             <a href="{{ route('barangs.index') }}" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">{{ __('Barang') }}</a>
                         </li>
                         <li>
-                            <a href="{{ route('barang-masuks.index') }}" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">{{ __('Masuk') }}</a>
+                            <a href="{{ route('barang_masuks.index') }}" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">{{ __('Masuk') }}</a>
                         </li>
                         <li>
-                            <a href="{{ route('barang-keluars.index') }}" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">{{ __('Keluar') }}</a>
+                            <a href="{{ route('barang_keluars.index') }}" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">{{ __('Keluar') }}</a>
                         </li>
                         <li>
-                            <a href="{{ route('barang-pendings.index') }}" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">{{ __('Pending') }}</a>
+                            <a href="{{ route('barang_pendings.index') }}" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">{{ __('Pending') }}</a>
                         </li>
                     </ul>
                 </li>

@@ -20,9 +20,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('barangs', BarangController::class);
-    Route::resource('barang-masuks', BarangMasukController::class);
-    Route::resource('barang-keluars', BarangKeluarController::class);
-    Route::resource('barang-pendings', BarangPendingController::class);
+    Route::resource('barang_masuks', BarangMasukController::class);
+    Route::resource('barang_keluars', BarangKeluarController::class);
+    Route::resource('barang_pendings', BarangPendingController::class);
 });
 
 require __DIR__ . '/auth.php';

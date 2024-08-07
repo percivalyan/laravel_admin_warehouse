@@ -9,12 +9,17 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form method="POST" action="{{ route('barang-masuks.store') }}">
+                    <form method="POST" action="{{ route('barang_masuks.store') }}">
                         @csrf
 
                         <div class="mb-4">
-                            <label for="barang_id" class="block text-sm font-medium text-gray-700">{{ __('Barang ID') }}</label>
-                            <input type="text" id="barang_id" name="barang_id" class="mt-1 block w-full" value="{{ old('barang_id') }}" required>
+                            <label for="barang_id" class="block text-sm font-medium text-gray-700">{{ __('Barang') }}</label>
+                            <select id="barang_id" name="barang_id" class="mt-1 block w-full" required>
+                                <option value="">{{ __('Select Barang') }}</option>
+                                @foreach($barangs as $barang)
+                                    <option value="{{ $barang->id }}" {{ old('barang_id') == $barang->id ? 'selected' : '' }}>{{ $barang->nama_barang }}</option>
+                                @endforeach
+                            </select>
                             @error('barang_id')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror

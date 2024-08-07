@@ -24,7 +24,7 @@
                         <p class="mt-1 text-gray-900">{{ $barangMasuk->tanggal }}</p>
                     </div>
 
-                    <a href="{{ route('barang-masuks.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded">
+                    <a href="{{ route('barang_masuks.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded">
                         {{ __('Back to List') }}
                     </a>
                 </div>
