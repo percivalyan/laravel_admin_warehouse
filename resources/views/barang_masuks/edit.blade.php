@@ -14,8 +14,9 @@
                         @method('PUT')
 
                         <div class="mb-4">
-                            <label for="barang_id" class="block text-sm font-medium text-gray-700">{{ __('Barang ID') }}</label>
-                            <input type="text" id="barang_id" name="barang_id" class="mt-1 block w-full" value="{{ old('barang_id', $barangMasuk->barang_id) }}" required>
+                            <label for="barang_id" class="block text-sm font-medium text-gray-700">{{ __('Barang') }}</label>
+                            <input type="hidden" id="barang_id" name="barang_id" value="{{ $barangMasuk->barang_id }}">
+                            <p class="mt-1 block w-full bg-gray-100 p-2 rounded">{{ $barangMasuk->barang->nama_barang }}</p>
                             @error('barang_id')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror
