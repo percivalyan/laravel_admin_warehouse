@@ -29,7 +29,14 @@ class BarangKeluarController extends Controller
             'tanggal' => 'required|date',
         ]);
 
-        BarangKeluar::create($request->all());
+        // Create new BarangKeluar
+        $barangKeluar = BarangKeluar::create($request->all());
+
+        // Update stock in Barang
+        $barang = Barang::find($request->barang_id);
+        $barang->stok -= $request->jumlah;
+        $barang->save();
+
         return redirect()->route('barang_keluars.index')->with('success', 'Barang Keluar created successfully.');
     }
 
@@ -52,13 +59,30 @@ class BarangKeluarController extends Controller
             'tanggal' => 'required|date',
         ]);
 
+        // Update stock in Barang (add old amount, subtract new amount)
+        $oldJumlah = $barangKeluar->jumlah;
+        $barang = Barang::find($request->barang_id);
+        $barang->stok += $oldJumlah;
+        $barang->stok -= $request->jumlah;
+        $barang->save();
+
+        // Update BarangKeluar
         $barangKeluar->update($request->all());
+
         return redirect()->route('barang_keluars.index')->with('success', 'Barang Keluar updated successfully.');
     }
 
     public function destroy(BarangKeluar $barangKeluar)
     {
+        // Update stock in Barang (add the amount being deleted)
+        $barang = Barang::find($barangKeluar->barang_id);
+        $barang->stok += $barangKeluar->jumlah;
+        $barang->save();
+
+        // Delete BarangKeluar
         $barangKeluar->delete();
+
         return redirect()->route('barang_keluars.index')->with('success', 'Barang Keluar deleted successfully.');
     }
 }
+?>
