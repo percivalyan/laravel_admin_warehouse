@@ -29,7 +29,14 @@ class BarangMasukController extends Controller
             'tanggal' => 'required|date',
         ]);
 
-        BarangMasuk::create($request->all());
+        // Create new BarangMasuk
+        $barangMasuk = BarangMasuk::create($request->all());
+
+        // Update stock in Barang
+        $barang = Barang::find($request->barang_id);
+        $barang->stok += $request->jumlah;
+        $barang->save();
+
         return redirect()->route('barang_masuks.index')->with('success', 'Barang Masuk created successfully.');
     }
 
@@ -52,14 +59,30 @@ class BarangMasukController extends Controller
             'tanggal' => 'required|date',
         ]);
 
+        // Update stock in Barang (subtract old amount, add new amount)
+        $oldJumlah = $barangMasuk->jumlah;
+        $barang = Barang::find($request->barang_id);
+        $barang->stok -= $oldJumlah;
+        $barang->stok += $request->jumlah;
+        $barang->save();
+
+        // Update BarangMasuk
         $barangMasuk->update($request->all());
+
         return redirect()->route('barang_masuks.index')->with('success', 'Barang Masuk updated successfully.');
     }
 
     public function destroy(BarangMasuk $barangMasuk)
     {
+        // Update stock in Barang (subtract the amount being deleted)
+        $barang = Barang::find($barangMasuk->barang_id);
+        $barang->stok -= $barangMasuk->jumlah;
+        $barang->save();
+
+        // Delete BarangMasuk
         $barangMasuk->delete();
+
         return redirect()->route('barang_masuks.index')->with('success', 'Barang Masuk deleted successfully.');
     }
 }
-
+?>
